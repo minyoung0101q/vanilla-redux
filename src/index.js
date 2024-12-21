@@ -1,23 +1,11 @@
-const add = document.getElementById("add");
-const minus = document.getElementById("minus");
-const span = document.querySelector("span");
+// redux의 store, reducer를 통한 "hello" or 1 return
 
-let counter = 0; /* let은 블록 스코프, 재선언 가능  */
+import { createStore } from "redux";
 
-const paint = () => {
-    span.innerText = `${counter}`;
+const countModifier = (count = 0) => {
+    return count;
 }
 
-const handleAdd = () => {
-    counter++; // counter = counter + 1; & ++counter 모두 사용 가능
-    // 전위, 후위 연산자는 단독으로 사용할 때 1증가하는 용도로 사용(순서 상관 없음) 
-    paint();
-}
+const countStore = createStore(countModifier);
+console.log(countStore.getState());
 
-const handleMinus = () => {
-    counter--; // counter = counter - 1; & --counter; 모두 사용 가능 
-    paint();
-}
-
-add.addEventListener("click", handleAdd);
-minus.addEventListener("click", handleMinus);
